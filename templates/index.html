@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Добро пожаловать в наше приложение!</h1>
+        <p>Это наше веб-приложение на Flask.</p>
+        <ul>
+            <li><a href="/register">Зарегистрироваться</a></li>
+            <li><a href="/users">Просмотр пользователей</a></li>
+        </ul>
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+        <div class="flashes">
+            {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+    </div>
+</body>
+
+</html>
